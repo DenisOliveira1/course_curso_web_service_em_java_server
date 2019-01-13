@@ -3,8 +3,74 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Servidor ligado</title>
+<script src="./jquery-3.3.1.js"></script>
 </head>
 <body>
 	O servidor foi iniciado
+
+	<form action="">
+
+		<input type="text" id="meuCep"/> 
+		<input type="button" value=buscar onClick="procuraMeuCep()"/> 
+		<br>
+		<table border="1">
+			<tr>
+				<td>Cep</td>
+				<td><span id="cep" /></td>
+			</tr>
+			<tr>
+				<td>Rua</td>
+				<td><span id="rua" /></td>
+			</tr>
+			<tr>
+				<td>Numero</td>
+				<td><span id="numero" /></td>
+			</tr>
+			<tr>
+				<td>Bairro</td>
+				<td><span id="bairro" /></td>
+			</tr>
+			<tr>
+				<td>Estado</td>
+				<td><span id="estado" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<script>
+	//; opcional em tudo
+	
+	function procuraMeuCep() {//transforma os spans em var
+		var meuCep= $("#meuCep").val();
+	
+		var respostaCep = $("#cep");
+		var respostaRua = $("#rua");
+		var respostaNumero = $("#numero");
+		var respostaBairro = $("#bairro");
+		var respostaEstado = $("#estado");
+		
+		$.ajax("http://denis-pc:8080/soap-rest-servidor/rest/cep/getCep/"+meuCep)
+		.done(function(data){
+			//alert("Sucesso! "+data.rua);
+			console.log(data)
+			respostaCep.html(data.cep);
+			respostaRua.html(data.rua);
+			respostaNumero.html(data.numero);
+			respostaBairro.html(data.bairro);
+			respostaEstado.html(data.estado);
+		})
+		.fail(function(){
+				
+		})
+		.always(function(){
+			
+		});
+	}
+		
+		$(document).ready(function() {//quando o documento estiver pronto executa isso
+			//alert("pagina terminou de carregar!");
+		});
+	</script>
+
 </body>
 </html>
