@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
+import br.edu.denis.rest.CepService;
 import br.edu.denis.rest.RestService1;
 import br.edu.denis.rest.RestService2;
 
@@ -24,5 +25,6 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(RestService1.class);  
         resources.add(RestService2.class);  
+        resources.add(CepService.class);  
     }
 }

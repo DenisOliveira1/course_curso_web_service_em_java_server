@@ -10,10 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import br.edu.denis.util.CorType;
 
-
-
-
-@XmlRootElement//transforma em um elemento retornavel
+@XmlRootElement//permite esse objeto ser retornado em formato xml tambem
 @XmlAccessorType(XmlAccessType.FIELD)//base-a a consturcao do seu retorno em seus campos
 
 public class Carro implements Serializable{

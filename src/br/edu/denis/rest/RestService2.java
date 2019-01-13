@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -41,6 +42,21 @@ public class RestService2 {
     public String getComoVai() {
         return "Vou bem, e voce?";
     }
+    
+    @GET
+    @Path("/tudobem/{nome}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTudoBemNome(@PathParam(value="nome")String nome) {
+        return "Tudo bem! e voce"+ nome +"?";
+    }
+    
+    @GET
+    @Path("/comovai/{nome}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getComoVaiNome(@PathParam(value="nome")String nome) {
+        return "Vou bem, e voce" + nome +"?";
+    }
+    
 
     @PUT
     @Consumes("application/xml")
