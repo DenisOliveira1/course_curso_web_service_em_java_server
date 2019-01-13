@@ -1,6 +1,12 @@
 package br.edu.denis.soap;
 
 import java.util.LinkedList;
+
+/**
+ * Enquanto o rest tem é baseado na url e no metodo o soap envia claramente o que quer em sua solicitacao,
+ * sendo assim mais burocratico e pesado, nao necessitando depender de parametros da url. 
+ */
+
 import java.util.List;
 import java.util.Random;
 
@@ -10,8 +16,11 @@ import javax.jws.WebService;
 
 import com.sun.istack.NotNull;
 
+import br.edu.denis.entidade.Carro;
+import br.edu.denis.util.CorType;
+
 @WebService
-public class Soap {
+public class SoapService {
 	
 	@WebMethod//vale para todos da pagina
 	public String ping(@WebParam(name = "nome")@NotNull String nome) {//da um nome para a variavel no xml de requisicao e resposta, se nao ficaria arg0, arg1...

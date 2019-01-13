@@ -1,4 +1,4 @@
-package br.edu.denis.soap;
+package br.edu.denis.entidade;
 
 import java.io.Serializable;
 
@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import br.edu.denis.util.CorType;
 
 
 
