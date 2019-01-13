@@ -62,4 +62,11 @@ public class Cep implements Serializable{
 		return serialVersionUID;
 	}
 
+	//metodos
+	@Override
+	public String toString() {
+		return "Cep [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", estado=" + estado
+				+ "]";
+	}
+
 }

@@ -2,8 +2,11 @@ package br.edu.denis.rest;
 
 import java.util.Random;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -25,10 +28,11 @@ public class CepService {
     //metodos
     @GET//por padrao acessar uma url já é um get
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{getCep : (?i)getcep}")//deixa case insensitive
-    public Cep getCep() {
+    @Path("/{getCep : (?i)getcep}/{cepRecebido}")//deixa case insensitive
+    public Cep getCep(@PathParam(value="cepRecebido")String cepRecebido) {
+    	
     	Cep toReturn = new Cep();
-    	toReturn.setCep("37713130");
+    	toReturn.setCep(cepRecebido);
     	toReturn.setBairro("bairro "+new Random().nextInt(20));
     	toReturn.setNumero(new Random().nextInt(100));
     	toReturn.setRua("rua "+new Random().nextInt(100));
@@ -36,4 +40,15 @@ public class CepService {
     	
         return toReturn;
     }
+    
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{setCep : (?i)setcep}")
+    public void setCep(Cep cepRecebido) {
+    	System.out.println("Objeto cep recebido:");
+    	System.out.println(cepRecebido.toString());
+    }
+
 }
+
