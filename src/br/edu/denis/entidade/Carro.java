@@ -1,10 +1,13 @@
 package br.edu.denis.entidade;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -12,21 +15,17 @@ import br.edu.denis.util.CorType;
 
 @XmlRootElement//permite esse objeto ser retornado em formato xml tambem
 @XmlAccessorType(XmlAccessType.FIELD)//base-a a consturcao do seu retorno em seus campos
-
-public class Carro implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-	
+public class Carro{
 	//variaveis
-	@XmlElement//poe @XmlElement so nos atributos que voce quer retornar no webservice
+	@XmlElement(name="nome1")//poe @XmlElement para alterar o nome do atributo
 	private String nome;
-	@XmlTransient//poe @XmlTransient nos atrbulos que nao quer retornar
+	@XmlTransient//poe @XmlTransient nos atributos que nao quer retornar
 	private String marca;
-	@XmlElement
 	private CorType cor;
+	private List<Bagagem> bagagens =  new LinkedList<Bagagem>();//se nao inicializar da erro
 	
 	//construtor
-	public Carro() {//para dar serializable precisa ter ao menos um construtor
+	public Carro() {//para dar serializable PRECISA TER UM CONSTRUTOR VAZIO
 		
 	}
 	
@@ -56,8 +55,17 @@ public class Carro implements Serializable{
 	public void setCor(CorType cor) {
 		this.cor = cor;
 	}
-	
-	
-	
+
+	public List<Bagagem> getBagagens() {
+		return bagagens;
+	}
+
+	public void setBagagens(List<Bagagem> bagagem) {
+		this.bagagens = bagagens;
+	}
+	public void addBagagens(Bagagem bagagem) {
+		this.bagagens.add(bagagem);
+	}
+
 
 }

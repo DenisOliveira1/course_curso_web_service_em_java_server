@@ -16,6 +16,7 @@ import javax.jws.WebService;
 
 import com.sun.istack.NotNull;
 
+import br.edu.denis.entidade.Bagagem;
 import br.edu.denis.entidade.Carro;
 import br.edu.denis.util.CorType;
 
@@ -42,9 +43,25 @@ public class SoapService {
 	
 	public List<Carro> getCarros(){
 		List<Carro> toReturn = new LinkedList<Carro>();
-		toReturn.add(new Carro("carro 1","fiat", CorType.BRANCO));
-		toReturn.add(new Carro("carro 2","ford", CorType.MARROM));
-		toReturn.add(new Carro("carro 3","renault", CorType.ROSA));
+		List<Bagagem> toReturn2 = new LinkedList<Bagagem>();
+		
+		Bagagem b1 = new Bagagem("b1");
+		Bagagem b2 = new Bagagem("b2");
+		Bagagem b3 = new Bagagem("b3");
+		
+		Carro c1 = new Carro("carro 1","fiat", CorType.BRANCO);
+		Carro c2 = new Carro("carro 2","ford", CorType.MARROM);
+		Carro c3 = new Carro("carro 3","renault", CorType.ROSA);
+
+		c1.addBagagens(b1);
+		c1.addBagagens(b2);
+		c1.addBagagens(b3);	
+		c3.addBagagens(b1);
+		
+		toReturn.add(c1);
+		toReturn.add(c2);
+		toReturn.add(c3);
+		
 		return toReturn;
 	}
 	

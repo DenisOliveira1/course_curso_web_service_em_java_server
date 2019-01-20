@@ -9,6 +9,8 @@ import br.edu.denis.rest.RestService1;
 import br.edu.denis.rest.RestService2;
 
 /**
+ * REST
+ * 
  * Esse é um metodo, o outro seria configurar pelo web.xml
  */
 
